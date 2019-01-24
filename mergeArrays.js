@@ -6,31 +6,21 @@ function mergeArrays(myArray, yourArray) {
   let currentIndexMerged = 0;
 
   while (currentIndexMerged < myArray.length + yourArray.length) {
-    if (currentIndexMine >= myArray.length) {
-      mergedArray[currentIndexMerged] = yourArray[currentIndexYours];
-      currentIndexYours++;
-    } else if (currentIndexYours >= yourArray.length) {
-      mergedArray[currentIndexMerged] = myArray[currentIndexMine];
-      currentIndexMine++;
-    } else if (myArray[currentIndexMine] < yourArray[currentIndexYours]) {
+    const isMyArrayExhausted = currentIndexMine >= myArray.length;
+    const isYourArrayExhausted = currentIndexYours >= yourArray.length;
+
+    if (
+      !isMyArrayExhausted &&
+      (isYourArrayExhausted ||
+        myArray[currentIndexMine] < yourArray[currentIndexYours])
+    ) {
       mergedArray[currentIndexMerged] = myArray[currentIndexMine];
       currentIndexMine++;
     } else {
       mergedArray[currentIndexMerged] = yourArray[currentIndexYours];
       currentIndexYours++;
     }
-    // const firstUnmergedYours = yourArray[currentIndexYours];
-    // const firstUnmergedMine = myArray[currentIndexMine];
-
-    // if (firstUnmergedMine < firstUnmergedYours) {
-    //   mergedArray[currentIndexMerged] = firstUnmergedMine;
-    //   currentIndexMine++;
-    // } else {
-    //   mergedArray[currentIndexMerged] = firstUnmergedYours;
-    //   currentIndexYours++;
-    // }
     currentIndexMerged++;
   }
-
   return mergedArray;
 }
