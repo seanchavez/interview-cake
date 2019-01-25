@@ -11,42 +11,58 @@
 //   }
 // }
 
-function isSingleRiffle(
-  half1,
-  half2,
-  shuffledDeck,
-  shuffledDeckIndex,
-  half1Index,
-  half2Index,
-) {
-  shuffledDeckIndex =
-    typeof shuffledDeck !== 'undefined' ? shuffledDeckIndex : 0;
-  half1Index = typeof half1Index !== 'undefined' ? half1Index : 0;
-  half2Index = typeof half2Index !== 'undefined' ? half2Index : 0;
+// function isSingleRiffle(
+//   half1,
+//   half2,
+//   shuffledDeck,
+//   shuffledDeckIndex,
+//   half1Index,
+//   half2Index,
+// ) {
+//   shuffledDeckIndex =
+//     typeof shuffledDeck !== 'undefined' ? shuffledDeckIndex : 0;
+//   half1Index = typeof half1Index !== 'undefined' ? half1Index : 0;
+//   half2Index = typeof half2Index !== 'undefined' ? half2Index : 0;
 
-  if (shuffledDeckIndex === shuffledDeck.length) {
-    return true;
+//   if (shuffledDeckIndex === shuffledDeck.length) {
+//     return true;
+//   }
+//   if (
+//     half1Index < half1Index.length &&
+//     half1[half1Index] === shuffledDeck[shuffledDeckIndex]
+//   ) {
+//     half1Index++;
+//   } else if (
+//     half2Index < half2Index.length &&
+//     half2[half2Index] === shuffledDeck[shuffledDeckIndex]
+//   ) {
+//     half2Index++;
+//   } else {
+//     return false;
+//   }
+//   shuffleDeckIndex++;
+//   return isSingleRiffle(
+//     half1,
+//     half2,
+//     shuffledDeck,
+//     shuffledDeckIndex,
+//     half1Index,
+//     half2Index,
+//   );
+// }
+
+function isSingleRiffle(half1, half2, shuffledDeck) {
+  let half1Index = 0;
+  let half2Index = 0;
+
+  for (const card of shuffledDeck) {
+    if (half1Index < half1.length && card === half1[half1Index]) {
+      half1Index++;
+    } else if (half2Index < half2.length && card === half2[half2Index]) {
+      half2Index++;
+    } else {
+      return false;
+    }
   }
-  if (
-    half1Index < half1Index.length &&
-    half1[half1Index] === shuffledDeck[shuffledDeckIndex]
-  ) {
-    half1Index++;
-  } else if (
-    half2Index < half2Index.length &&
-    half2[half2Index] === shuffledDeck[shuffledDeckIndex]
-  ) {
-    half2Index++;
-  } else {
-    return false;
-  }
-  shuffleDeckIndex++;
-  return isSingleRiffle(
-    half1,
-    half2,
-    shuffledDeck,
-    shuffledDeckIndex,
-    half1Index,
-    half2Index,
-  );
+  return true;
 }
