@@ -31,3 +31,8 @@ function mergeArrays(myArray, yourArray) {
   }
   return mergedArray;
 }
+
+const myArray = [3, 4, 6, 10, 11, 15];
+const yourArray = [1, 5, 8, 12, 14];
+
+console.log(mergeArrays(myArray, yourArray));
