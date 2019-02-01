@@ -17,14 +17,17 @@ function mergeArrays(myArray, yourArray) {
   let currentIndexMerged = 0;
 
   while (currentIndexMerged < myArray.length + yourArray.length) {
-    const firstUnmergedYours = yourArray[currentIndexYours];
-    const firstUnmergedMine = myArray[currentIndexMine];
-
-    if (firstUnmergedMine < firstUnmergedYours) {
-      mergedArray[currentIndexMerged] = firstUnmergedMine;
+    if (currentIndexMine >= myArray.length) {
+      mergedArray[currentIndexMerged] = yourArray[currentIndexYours];
+      currentIndexYours++;
+    } else if (currentIndexYours >= yourArray.length) {
+      mergedArray[currentIndexMerged] = myArray[currentIndexMine];
+      currentIndexMine++;
+    } else if (myArray[currentIndexMine] < yourArray[currentIndexYours]) {
+      mergedArray[currentIndexMerged] = myArray[currentIndexMine];
       currentIndexMine++;
     } else {
-      mergedArray[currentIndexMerged] = firstUnmergedYours;
+      mergedArray[currentIndexMerged] = yourArray[currentIndexYours];
       currentIndexYours++;
     }
     currentIndexMerged++;
