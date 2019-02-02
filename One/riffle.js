@@ -11,34 +11,53 @@
 //   }
 // }
 
-function isSingleRiffle(half1, half2, shuffledDeck, half1Index, half2Index) {
-  shuffledDeckIndex =
-    typeof shuffledDeckIndex === 'undefined' ? 0 : shuffledDeckIndex;
-  half1Index = typeof half1Index === 'undefined' ? 0 : half1Index;
-  half2Index = typeof half2Index === 'undefined' ? 0 : half2Index;
+// function isSingleRiffle(half1, half2, shuffledDeck, half1Index, half2Index) {
+//   shuffledDeckIndex =
+//     typeof shuffledDeckIndex === 'undefined' ? 0 : shuffledDeckIndex;
+//   half1Index = typeof half1Index === 'undefined' ? 0 : half1Index;
+//   half2Index = typeof half2Index === 'undefined' ? 0 : half2Index;
 
-  if (shuffledDeckIndex === shuffledDeck.length) {
-    return true;
-  }
+//   if (shuffledDeckIndex === shuffledDeck.length) {
+//     return true;
+//   }
 
-  if (
-    half1Index < half1.length &&
-    half1[half1Index] === shuffledDeck[shuffledDeckIndex]
-  ) {
-    half1Index++;
-  } else if (
-    half2Index < half2.length &&
-    half2[half2Index] === shuffledDeck[shuffledDeckIndex]
-  ) {
-    half2Index++;
+//   if (
+//     half1Index < half1.length &&
+//     half1[half1Index] === shuffledDeck[shuffledDeckIndex]
+//   ) {
+//     half1Index++;
+//   } else if (
+//     half2Index < half2.length &&
+//     half2[half2Index] === shuffledDeck[shuffledDeckIndex]
+//   ) {
+//     half2Index++;
+//   }
+//   shuffledDeckIndex++;
+//   return isSingleRiffle(
+//     half1,
+//     half2,
+//     shuffledDeck,
+//     shuffledDeckIndex,
+//     half1Index,
+//     half2Index,
+//   );
+// }
+
+function isSingleRiffle(half1, half2, shuffledDeck) {
+  let half1Index = 0;
+  let half2Index = 0;
+
+  for (i = 0; i < shuffledDeck.length; i++) {
+    if (half1Index < half1.length && half1[half1Index] === shuffledDeck[i]) {
+      half1Index++;
+    } else if (
+      half2Index < half2.length &&
+      half2[half2Index] === shuffledDeck[i]
+    ) {
+      half2Index++;
+    } else {
+      return false;
+    }
   }
-  shuffledDeckIndex++;
-  return isSingleRiffle(
-    half1,
-    half2,
-    shuffledDeck,
-    shuffledDeckIndex,
-    half1Index,
-    half2Index,
-  );
+  return true;
 }
