@@ -29,7 +29,7 @@ function wave(str){
 
 function diamond(n){
   if (n % 2 === 0 || n < 0) return null
-  
+  return makeTopOrBottomRow(n).concat(makeMiddleRow(n), makeTopOrBottomRow(n))
  } 
   
   function makeTopOrBottomRow(n) {
@@ -47,7 +47,15 @@ function diamond(n){
   }
   
   function makeMiddleRow(n) {
+    const row = []
     for (i = 0; i < n; i++) {
-      
+      if (i === n - 1) {
+        row.push('\n')
+      } else {
+        row.push('*')
+      }
     }
+    return row.join('')
   }
+
+  console.log(diamond(3))
