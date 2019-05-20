@@ -29,15 +29,15 @@ function wave(str){
 
 function diamond(n){
   if (n % 2 === 0 || n < 0) return null
-  return makeTopOrBottomRow(n).concat(makeMiddleRow(n), makeTopOrBottomRow(n))
+  return makeTopOrBottomRow(n - 2).concat(makeMiddleRow(n), makeTopOrBottomRow(n - 2))
  } 
   
   function makeTopOrBottomRow(n) {
     const row = []
-    for (i = 0; i < n - 2; i++) {
+    for (i = 0; i < n + 2; i++) {
       if (i === 0) {
         row.push(' ')
-      } else if (i === (n - 2) - 1) {
+      } else if (i === n + 1) {
         row.push('\n')
       } else {
         row.push('*')
@@ -48,8 +48,8 @@ function diamond(n){
   
   function makeMiddleRow(n) {
     const row = []
-    for (i = 0; i < n; i++) {
-      if (i === n - 1) {
+    for (i = 0; i < n + 1; i++) {
+      if (i === n ) {
         row.push('\n')
       } else {
         row.push('*')
@@ -58,4 +58,6 @@ function diamond(n){
     return row.join('')
   }
 
-  console.log(diamond(3))
+  console.log(diamond(3)) 
+  //console.log(makeTopOrBottomRow(1))
+  //console.log(makeMiddleRow(3))
