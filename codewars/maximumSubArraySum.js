@@ -25,3 +25,29 @@ function wave(str){
   }
   return results
 }
+
+
+function diamond(n){
+  if (n % 2 === 0 || n < 0) return null
+  
+ } 
+  
+  function makeTopOrBottomRow(n) {
+    const row = []
+    for (i = 0; i < n - 2; i++) {
+      if (i === 0) {
+        row.push(' ')
+      } else if (i === (n - 2) - 1) {
+        row.push('\n')
+      } else {
+        row.push('*')
+      }
+    }
+    return row.join('')
+  }
+  
+  function makeMiddleRow(n) {
+    for (i = 0; i < n; i++) {
+      
+    }
+  }
