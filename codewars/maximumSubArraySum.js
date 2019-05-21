@@ -27,36 +27,56 @@ function wave(str){
 }
 
 
-function diamond(n){
+// function diamond(n){
+//   if (n % 2 === 0 || n < 0) return null
+//   return makeTopOrBottomRow(n - 2).concat(makeMiddleRow(n), makeTopOrBottomRow(n - 2))
+//  } 
+  
+//   function makeTopOrBottomRow(n) {
+//     const row = []
+//     for (i = 0; i < n + 2; i++) {
+//       if (i === 0) {
+//         row.push(' ')
+//       } else if (i === n + 1) {
+//         row.push('\n')
+//       } else {
+//         row.push('*')
+//       }
+//     }
+//     return row.join('')
+//   }
+  
+//   function makeMiddleRow(n) {
+//     const row = []
+//     for (i = 0; i < n + 1; i++) {
+//       if (i === n ) {
+//         row.push('\n')
+//       } else {
+//         row.push('*')
+//       }
+//     }
+//     return row.join('')
+//   }
+
+function diamond(n) {
   if (n % 2 === 0 || n < 0) return null
-  return makeTopOrBottomRow(n - 2).concat(makeMiddleRow(n), makeTopOrBottomRow(n - 2))
- } 
-  
-  function makeTopOrBottomRow(n) {
-    const row = []
-    for (i = 0; i < n + 2; i++) {
-      if (i === 0) {
-        row.push(' ')
-      } else if (i === n + 1) {
-        row.push('\n')
-      } else {
-        row.push('*')
-      }
-    }
-    return row.join('')
+  let diamond = ''
+  let padding = (n - 1) / 2
+  for (i = 0; i < n; i + 2) {
+    diamond += diamond.padStart(2)
+    diamond += '*'.repeat(i)
+    //diamond += diamond.padEnd(padding)
+    padding--
+    
+    // for(j = 1; j < n; j++) {
+    //   // if (j === Math.floor(n / 2)) {
+    //   //   diamond += '*'
+    //   // }
+    // }
+    diamond += '\n'
   }
-  
-  function makeMiddleRow(n) {
-    const row = []
-    for (i = 0; i < n + 1; i++) {
-      if (i === n ) {
-        row.push('\n')
-      } else {
-        row.push('*')
-      }
-    }
-    return row.join('')
-  }
+  return diamond
+}
 
   console.log(diamond(3)) 
   //console.log(makeTopOrBottomRow(1))
