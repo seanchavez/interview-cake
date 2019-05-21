@@ -55,39 +55,57 @@ function wave(str) {
 //     return row.join('')
 //   }
 
+// function diamond(n) {
+//   if (n % 2 === 0 || n < 0) return null;
+//   let diamond = "";
+//   let padding = (n - 1) / 2;
+//   let count = 1;
+
+//   while (count <= n) {
+//     //console.log('fuck')
+//     diamond =
+//       diamond.padStart(Math.ceil(n / 2)) +
+//       diamond.repeat(count) +
+//       diamond.padEnd(n) +
+//       "\n";
+//     count++;
+//     // diamond += '\n'
+//   }
+
+//   //for (i = 0; i < n; i + 2) {
+//   //   //diamond += diamond.padStart(padding)
+//   //   diamond += diamond.repeat(i)
+//   //   //diamond += diamond.padEnd(padding)
+//   //   padding--
+
+//   //   // for(j = 1; j < n; j++) {
+//   //   //   // if (j === Math.floor(n / 2)) {
+//   //   //   //   diamond += '*'
+//   //   //   // }
+//   //   // }
+//   //   diamond += '\n'
+//   // }
+//   return diamond;
+// }
+
 function diamond(n) {
   if (n % 2 === 0 || n < 0) return null;
-  let diamond = "*";
-  let padding = (n - 1) / 2;
-  let count = 1;
-
-  while (count <= n) {
-    //console.log('fuck')
-    diamond =
-      diamond.repeat(count) +
-      diamond.padStart(padding) +
-      diamond.padEnd(padding) +
-      "\n";
-    count++;
-    // diamond += '\n'
+  let diamond = "";
+  let stars = 1;
+  let spaces = (n - 1) / 2;
+  for (i = 0; i < n; i++) {
+    diamond += " ".repeat(spaces);
+    diamond += "*".repeat(stars);
+    diamond += " ".repeat(spaces);
+    diamond += "\n";
+    stars += 2;
+    spaces -= 2;
+    // const row = Array(n + 1);
+    // row[n - 1] = "\n";
   }
-
-  //for (i = 0; i < n; i + 2) {
-  //   //diamond += diamond.padStart(padding)
-  //   diamond += diamond.repeat(i)
-  //   //diamond += diamond.padEnd(padding)
-  //   padding--
-
-  //   // for(j = 1; j < n; j++) {
-  //   //   // if (j === Math.floor(n / 2)) {
-  //   //   //   diamond += '*'
-  //   //   // }
-  //   // }
-  //   diamond += '\n'
-  // }
   return diamond;
 }
 
-console.log(diamond(3));
+console.log(diamond(5));
 //console.log(makeTopOrBottomRow(1))
 //console.log(makeMiddleRow(3))
