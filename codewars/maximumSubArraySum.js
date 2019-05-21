@@ -92,8 +92,8 @@ function diamond(n) {
   if (n % 2 === 0 || n < 0) return null;
   let diamond = "";
   let stars = 1;
-  let spaces = 2; //Math.floor(n / 2);
-  console.log(spaces);
+  //let spaces = 2; //Math.floor(n / 2);
+  //console.log(spaces);
   const star = "*";
   const space = " ";
   for (i = (n - 1) / 2; i >= 0; i--) {
@@ -101,9 +101,15 @@ function diamond(n) {
     diamond += star.repeat(stars);
     diamond += "\n";
     stars += 2;
-    spaces -= 2;
-    // const row = Array(n + 1);
-    // row[n - 1] = "\n";
+    //spaces -= 2;
+  }
+  stars -= 4;
+  for (i = 1; i <= (n - 1) / 2; i++) {
+    diamond += space.repeat(i);
+    diamond += star.repeat(stars);
+    diamond += "\n";
+    stars -= 2;
+    //spaces -= 2;
   }
   return diamond;
 }
