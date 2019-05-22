@@ -40,4 +40,4 @@ function diamond(n) {
   return diamond;
 }
 
-console.log(diamond(9));
+console.log(diamond(11));
